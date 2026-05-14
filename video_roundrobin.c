@@ -16,6 +16,13 @@ int main() {
 
     int done;
 
+    // Arrays for Gantt Chart
+    int process[100];
+    int gantt_time[100];
+    int k = 0;
+
+    gantt_time[k] = 0;
+
     while (1) {
 
         done = 1;
@@ -25,6 +32,8 @@ int main() {
             if (rt[i] > 0) {
 
                 done = 0;
+
+                process[k] = i;
 
                 if (rt[i] > quantum) {
 
@@ -41,6 +50,9 @@ int main() {
 
                     rt[i] = 0;
                 }
+
+                k++;
+                gantt_time[k] = time;
             }
         }
 
@@ -67,6 +79,18 @@ int main() {
 
     printf("\nAverage Turnaround Time = %.2f\n",
            avg_tat);
+
+    // Gantt Chart Printing
+    printf("\n\nGantt Chart:\n\n");
+
+    for(int i = 0; i < k; i++) {
+        printf("|  J%d  ", process[i] + 1);
+    }
+    printf("|\n");
+
+    for(int i = 0; i <= k; i++) {
+        printf("%-6d", gantt_time[i]);
+    }
 
     return 0;
 }

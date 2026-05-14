@@ -79,5 +79,27 @@ int main() {
     printf("\nAverage Turnaround Time = %.2f\n",
            avg_tat);
 
+    // Gantt Chart Printing
+
+    int time = 0;
+
+    printf("\nGantt Chart:\n\n");
+
+    for (int i = 0; i < n; i++) {
+
+        printf("|  P%d  ", p[i].pid);
+    }
+
+    printf("|\n");
+
+    printf("0");
+
+    for (int i = 0; i < n; i++) {
+
+        time += p[i].bt;
+
+        printf("%6d", time);
+    }
+
     return 0;
 }
